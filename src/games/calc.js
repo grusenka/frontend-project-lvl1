@@ -1,6 +1,5 @@
-import { cons } from 'hexlet-pairs';
-import gameFlow from '../game-flow';
-import getRandom from '../utils';
+import startBrainGames from '../brain-games.js';
+import getRandom from '../utils.js';
 
 const collectionOfOperators = ['+', '-', '*'];
 
@@ -10,20 +9,21 @@ const calculateOperation = (num1, operation, num2) => {
   switch (operation) {
     case '+': return (num1 + num2);
     case '-': return (num1 - num2);
-    default: return (num1 * num2);
+    case '*': return (num1 * num2);
+    default: throw new Error(`Операция ${operation} не поддерживается.`);
   }
 };
 
 const description = 'What is the result of the expression?';
 
-const gameFeature = () => {
+const genGameRound = () => {
   const number1 = getRandom(0, 100);
   const number2 = getRandom(0, 100);
   const operator = getRandomOperator();
 
   const question = `${number1} ${operator} ${number2}`;
-  const correctAnswer = String(calculateOperation(number1, operator, number2));
-  return cons(question, correctAnswer);
+  const answer = String(calculateOperation(number1, operator, number2));
+  return [question, answer];
 };
 
-export default () => gameFlow(gameFeature, description);
+export default () => startBrainGames(genGameRound, description);

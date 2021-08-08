@@ -1,6 +1,5 @@
-import { cons } from 'hexlet-pairs';
-import gameFlow from '../game-flow';
-import getRandom from '../utils';
+import startBrainGames from '../brain-games.js';
+import getRandom from '../utils.js';
 
 const getRemain = (x, y) => x % y;
 
@@ -8,13 +7,13 @@ const getGreatComDiv = (a, b) => ((b === 0) ? a : getGreatComDiv(b, getRemain(a,
 
 const description = 'Find the greatest common divisor of given numbers.';
 
-const gameFeature = () => {
+const genGameRound = () => {
   const number1 = getRandom();
   const number2 = getRandom();
   const question = `${number1} ${number2}`;
-  const correctAnswer = String(getGreatComDiv(number1, number2));
+  const answer = String(getGreatComDiv(number1, number2));
 
-  return cons(question, correctAnswer);
+  return [question, answer];
 };
 
-export default () => gameFlow(gameFeature, description);
+export default () => startBrainGames(genGameRound, description);

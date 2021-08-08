@@ -1,6 +1,5 @@
-import { cons } from 'hexlet-pairs';
-import gameFlow from '../game-flow';
-import getRandom from '../utils';
+import startBrainGames from '../brain-games.js';
+import getRandom from '../utils.js';
 
 const isPrime = (num) => {
   if (num < 2) {
@@ -17,12 +16,12 @@ const isPrime = (num) => {
 
 const description = 'Is this number prime?';
 
-const gameFeature = () => {
+const genGameRound = () => {
   const number = getRandom();
   const question = `${number}`;
-  const correctAnswer = isPrime(number) ? 'yes' : 'no';
+  const answer = isPrime(number) ? 'yes' : 'no';
 
-  return cons(question, correctAnswer);
+  return [question, answer];
 };
 
-export default () => gameFlow(gameFeature, description);
+export default () => startBrainGames(genGameRound, description);
