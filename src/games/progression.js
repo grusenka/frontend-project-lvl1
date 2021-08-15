@@ -1,4 +1,4 @@
-import startBrainGames from '../brain-games.js';
+import startBrainGames from '../../bin/brain-games.js';
 
 const lengthOfProgression = 10;
 

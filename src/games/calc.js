@@ -1,4 +1,4 @@
-import startBrainGames from '../brain-games.js';
+import startBrainGames from '../../bin/brain-games.js';
 import getRandom from '../utils.js';
 
 const collectionOfOperators = ['+', '-', '*'];
